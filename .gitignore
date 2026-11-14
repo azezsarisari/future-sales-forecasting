@@ -34,3 +34,5 @@ reports/metrics/*
 .DS_Store
 Thumbs.db
 .vscode/
+# Reproducibility test environment
+.venv-repro-check/
