@@ -8,3 +8,4 @@ joblib
 streamlit
 pytest
 jupyter
+openpyxl
