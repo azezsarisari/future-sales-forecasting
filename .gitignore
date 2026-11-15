@@ -36,3 +36,10 @@ Thumbs.db
 .vscode/
 # Reproducibility test environment
 .venv-repro-check/
+
+# Local V2 testing artifacts
+sample_sales_v2.csv
+sample_sales_v2.xlsx
+sample_sales_missing_dates.csv
+test_invalid_datasets/
+app/*.v2_backup

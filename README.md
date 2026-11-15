@@ -1,4 +1,4 @@
-﻿# Future Sales Forecasting
+# Future Sales Forecasting
 
 An end-to-end machine learning project for forecasting retail sales using Python, XGBoost, and time-series analysis.
 
@@ -116,3 +116,77 @@ The project was tested in a separate workspace and a fresh Python environment.
 
 MIT License.
 
+
+## V2 - Dynamic Sales Forecasting
+
+Version 2 introduces an interactive sales forecasting system.
+
+### Features
+
+- Upload CSV and XLSX datasets (maximum 20 MB).
+- Select custom date and sales columns.
+- Validate sales data and detect missing dates.
+- Aggregate daily sales records.
+- Generate time-series features.
+- Train XGBoost models on uploaded data.
+- Compare XGBoost with Seasonal Naive.
+- Generate forecasts for 7, 14, or 30 days.
+- Evaluate models using MAE, RMSE, and WAPE.
+- Run walk-forward backtesting across four historical windows.
+- Display interactive charts and model comparisons.
+- Download forecasts as CSV.
+
+### Data Requirements
+
+- Minimum 120 calendar days.
+- Minimum 90 observed sales days.
+- Maximum 10% missing calendar days.
+- Last 28 days must contain valid sales.
+- Negative or invalid sales values are rejected.
+- Missing calendar dates are preserved as missing values.
+
+### Model Evaluation
+
+The system uses chronological validation to compare
+XGBoost and Seasonal Naive.
+
+The forecasting model is selected using validation MAE.
+
+Walk-forward backtesting evaluates both models across
+four non-overlapping 30-day historical windows.
+
+Backtesting results are displayed separately and do not
+determine the forecasting model selection.
+
+If backtesting is unavailable, valid future forecasts
+can still be generated.
+
+### Run the Application
+
+Install dependencies:
+
+    python -m pip install -r requirements-lock.txt
+
+Start the dashboard:
+
+    python -m streamlit run app/dashboard.py
+
+Open the local URL displayed in the terminal.
+
+Select Upload & Forecast from the sidebar.
+
+### Testing
+
+Run automated tests:
+
+    python -m pytest tests/ -q
+
+The V2 development test suite passed 139 tests.
+
+### Limitations
+
+- Forecast accuracy depends on the uploaded data.
+- Missing sales values in existing rows are rejected.
+- Backtesting requires sufficient complete historical windows.
+- No automatic live data ingestion is implemented.
+- Forecasts are estimates, not guaranteed sales.

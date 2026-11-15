@@ -1,8 +1,10 @@
-﻿from pathlib import Path
+from pathlib import Path
 import json
 
 import pandas as pd
 import streamlit as st
+
+from app.upload_page import render_upload_page
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data"
@@ -67,6 +69,7 @@ page = st.sidebar.radio(
         "Historical Analysis",
         "Model Performance",
         "30-Day Forecast",
+        "Upload & Forecast",
     ],
 )
 
@@ -269,3 +272,7 @@ elif page == "30-Day Forecast":
         "Predictions are generated from historical data ending "
         "August 15, 2017. They are not live forecasts."
     )
+
+
+elif page == "Upload & Forecast":
+    render_upload_page()
