@@ -52,13 +52,6 @@ def load_data():
     return history, forecast, test, comparison, backtest, metrics
 
 
-try:
-    history, forecast, test, comparison, backtest, metrics = load_data()
-except (FileNotFoundError, ValueError, KeyError, json.JSONDecodeError) as exc:
-    st.error(f"Unable to load project data: {exc}")
-    st.stop()
-
-
 st.sidebar.title("Sales Forecasting")
 st.sidebar.caption("Machine Learning Dashboard")
 
@@ -80,6 +73,18 @@ st.sidebar.info(
     "Historical data ends: 2017-08-15\n\n"
     "Forecast horizon: 30 days"
 )
+
+
+if page != "Upload & Forecast":
+    try:
+        history, forecast, test, comparison, backtest, metrics = load_data()
+    except (FileNotFoundError, ValueError, KeyError, json.JSONDecodeError) as exc:
+        st.warning(
+            "Historical V1 demonstration data is unavailable. "
+            "Select Upload & Forecast to analyze your own dataset."
+        )
+        st.caption(f"Missing historical resources: {exc}")
+        st.stop()
 
 
 if page == "Overview":
